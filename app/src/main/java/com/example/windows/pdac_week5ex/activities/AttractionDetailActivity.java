@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -92,7 +93,7 @@ public class AttractionDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(createShareIntent(attraction.getPhotoPath()));
+                startActivity(Intent.createChooser(createShareIntent(attraction.getPhotoPath()),"Share image using"));
                 Snackbar.make(view, attraction.getPhotoPath(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -102,12 +103,13 @@ public class AttractionDetailActivity extends AppCompatActivity {
     private static Intent createShareIntent(String photopath){
 
         Intent myShareIntent = new Intent(Intent.ACTION_SEND);
-        Uri imageUri = Uri.parse(photopath);
-       // myShareIntent.setType("image/*");
-        myShareIntent.setType("text/*");
-        myShareIntent.putExtra(Intent.EXTRA_TEXT, photopath);
-        //myShareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-        Toast.makeText(PDACWeek5ExApp.getContext(), photopath,Toast.LENGTH_SHORT).show();
+         Uri imageUri = Uri.parse(photopath);
+      // Uri imageUri = Uri.parse(photopath);
+       myShareIntent.setType("image/*");
+       // myShareIntent.setType("text/*");
+       //myShareIntent.putExtra(Intent.EXTRA_TEXT, photopath);
+        myShareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+      //  Toast.makeText(PDACWeek5ExApp.getContext(), photopath,Toast.LENGTH_SHORT).show();
 
         return myShareIntent;
     }

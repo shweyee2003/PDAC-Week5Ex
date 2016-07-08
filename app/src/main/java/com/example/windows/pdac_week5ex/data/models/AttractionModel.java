@@ -1,6 +1,7 @@
 package com.example.windows.pdac_week5ex.data.models;
 
 import com.example.windows.pdac_week5ex.data.vos.AttractionVO;
+import com.example.windows.pdac_week5ex.data.vos.ImagesVO;
 import com.example.windows.pdac_week5ex.utils.CommonInstances;
 import com.example.windows.pdac_week5ex.utils.JsonUtils;
 import com.google.gson.reflect.TypeToken;
@@ -42,6 +43,7 @@ public class AttractionModel {
             Type listType = new TypeToken<List<AttractionVO>>() {
             }.getType();
             attractionList = CommonInstances.getGsonInstance().fromJson(dummyAttractionList, listType);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
