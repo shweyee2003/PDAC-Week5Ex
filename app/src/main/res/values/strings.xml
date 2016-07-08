@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PDAC-Week5Ex</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_attraction_detail">AttractionDetailActivity</string>
+
+    <string name="attraction__photo_shared_transition">attraction__photo_shared_transition</string>
 </resources>
