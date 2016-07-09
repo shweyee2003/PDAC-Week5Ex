@@ -92,7 +92,6 @@ public class AttractionDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(Intent.createChooser(createShareIntent(attraction.getPhotoPath()),"Share image using"));
                 Snackbar.make(view, attraction.getPhotoPath(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
@@ -103,12 +102,12 @@ public class AttractionDetailActivity extends AppCompatActivity {
     private static Intent createShareIntent(String photopath){
 
         Intent myShareIntent = new Intent(Intent.ACTION_SEND);
-         Uri imageUri = Uri.parse(photopath);
+        // Uri imageUri = Uri.parse(photopath);
       // Uri imageUri = Uri.parse(photopath);
-       myShareIntent.setType("image/*");
-       // myShareIntent.setType("text/*");
-       //myShareIntent.putExtra(Intent.EXTRA_TEXT, photopath);
-        myShareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+       //myShareIntent.setType("image/*");
+        myShareIntent.setType("text/*");
+       myShareIntent.putExtra(Intent.EXTRA_TEXT, photopath);
+       // myShareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
       //  Toast.makeText(PDACWeek5ExApp.getContext(), photopath,Toast.LENGTH_SHORT).show();
 
         return myShareIntent;
